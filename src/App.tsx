@@ -1,5 +1,5 @@
 // npm modules 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Routes, Route, useNavigate } from 'react-router-dom'
 
 // pages
@@ -15,16 +15,32 @@ import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute'
 
 // services
 import * as authService from './services/authService'
+import * as mealCardService from './services/MealCardService'
 
 // styles
 import './App.css'
 
 // types
 import { User } from './types/models'
+import { MealCard } from './types/models'
+import MealCardList from './pages/MealCardList/MealCardList'
 
 function App(): JSX.Element {
   const [user, setUser] = useState<User | null>(authService.getUser())
+  const [mealCards, setMealCards] = useState<MealCard[]>([])
   const navigate = useNavigate()
+
+  useEffect((): void => {
+    const fetchMealCards = async (): Promise<void> => {
+      try {
+        const mealCardData: MealCard[] = await mealCardService.getAllMealCards()
+        setMealCards(mealCardData)
+      } catch (error) {
+        console.log(error)
+      }
+    }
+    fetchMealCards()
+  }, [])
   
   const handleLogout = (): void => {
     authService.logout()
@@ -49,6 +65,14 @@ function App(): JSX.Element {
             </ProtectedRoute>
           }
         />
+        <Route
+          path="/mealCards"
+          element={
+            <ProtectedRoute user={user}>
+              <MealCardList mealCards={mealCards} />
+            </ProtectedRoute>
+          }
+        />        
         <Route
           path="/auth/signup"
           element={<Signup handleAuthEvt={handleAuthEvt} />}
