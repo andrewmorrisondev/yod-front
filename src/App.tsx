@@ -5,9 +5,11 @@ import { Routes, Route, useNavigate } from 'react-router-dom'
 // pages
 import Signup from './pages/Signup/Signup'
 import Login from './pages/Login/Login'
-import Landing from './pages/Landing/Landing'
-import Profiles from './pages/Profiles/Profiles'
 import ChangePassword from './pages/ChangePassword/ChangePassword'
+import Profiles from './pages/Profiles/Profiles'
+import ProfileDetails from './pages/ProfileDetails/ProfileDetails'
+import Landing from './pages/Landing/Landing'
+import MealCardList from './pages/MealCardList/MealCardList'
 
 // components
 import NavBar from './components/NavBar/NavBar'
@@ -15,15 +17,16 @@ import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute'
 
 // services
 import * as authService from './services/authService'
-import * as mealCardService from './services/MealCardService'
+import * as mealCardService from './services/mealCardService'
 
 // styles
 import './App.css'
 
 // types
-import { User } from './types/models'
-import { MealCard } from './types/models'
-import MealCardList from './pages/MealCardList/MealCardList'
+import {
+  User,
+  MealCard
+} from './types/models'
 
 function App(): JSX.Element {
   const [user, setUser] = useState<User | null>(authService.getUser())
@@ -62,6 +65,14 @@ function App(): JSX.Element {
           element={
             <ProtectedRoute user={user}>
               <Profiles />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/profiles/:id"
+          element={
+            <ProtectedRoute user={user}>
+                 {user !== null && <ProfileDetails user={user} />}
             </ProtectedRoute>
           }
         />
