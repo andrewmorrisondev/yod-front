@@ -17,33 +17,20 @@ import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute'
 
 // services
 import * as authService from './services/authService'
-import * as mealCardService from './services/mealCardService'
+
 
 // styles
 import './App.css'
 
 // types
 import {
-  User,
-  MealCard
+  User
 } from './types/models'
 
 function App(): JSX.Element {
   const [user, setUser] = useState<User | null>(authService.getUser())
-  const [mealCards, setMealCards] = useState<MealCard[]>([])
   const navigate = useNavigate()
 
-  useEffect((): void => {
-    const fetchMealCards = async (): Promise<void> => {
-      try {
-        const mealCardData: MealCard[] = await mealCardService.getAllMealCards()
-        setMealCards(mealCardData)
-      } catch (error) {
-        console.log(error)
-      }
-    }
-    fetchMealCards()
-  }, [])
   
   const handleLogout = (): void => {
     authService.logout()
@@ -80,7 +67,7 @@ function App(): JSX.Element {
           path="/mealCards"
           element={
             <ProtectedRoute user={user}>
-              <MealCardList mealCards={mealCards} />
+              <MealCardList />
             </ProtectedRoute>
           }
         />        

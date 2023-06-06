@@ -1,14 +1,30 @@
+// npm modules
+import { useState, useEffect } from 'react'
+
+// services
+import * as mealCardService from '../../services/mealCardService'
+
 // css
 import styles from './MealCardList.module.css'
 
 // types
 import { MealCard } from '../../types/models'
 
-interface MealCardListProps {
-  mealCards: MealCard[]
-}
+const MealCardList = () => {
+  const [mealCards, setMealCards] = useState<MealCard[]>([])
 
-const MealCardList = ({ mealCards }: MealCardListProps): JSX.Element => {
+  useEffect((): void => {
+    const fetchMealCards = async (): Promise<void> => {
+      try {
+        const mealCardData: MealCard[] = await mealCardService.getAllMealCards()
+        setMealCards(mealCardData)
+      } catch (error) {
+        console.log(error)
+      }
+    }
+    fetchMealCards()
+  }, [])
+
   if (!mealCards.length) return <main className={styles.MealCardList}><h1>nothing to swipe on</h1></main>
 
   return (
