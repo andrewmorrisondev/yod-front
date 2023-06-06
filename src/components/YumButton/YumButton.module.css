@@ -1,0 +1,13 @@
+.yumButton {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  background-color: #FFC107;
+  color: black;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+  cursor: pointer;
+}

@@ -8,9 +8,16 @@ import * as mealCardService from '../../services/mealCardService'
 import styles from './MealCardList.module.css'
 
 // types
-import { MealCard } from '../../types/models'
+import { MealCard, User } from '../../types/models'
 
-const MealCardList = () => {
+// components
+import MealCardComp from '../../components/MealCardComp/MealCardComp' 
+
+interface MealCardListProps {
+  user: User
+}
+
+const MealCardList = (props: MealCardListProps): JSX.Element => {
   const [mealCards, setMealCards] = useState<MealCard[]>([])
 
   useEffect((): void => {
@@ -31,7 +38,7 @@ const MealCardList = () => {
     <main className={styles.MealCardList}>
       <h1>Hello. This is a list of all the mealCards.</h1>
       {mealCards.map((mealCard: MealCard) => (
-        <p key={mealCard.id}>{mealCard.name}</p>
+        <MealCardComp key={mealCard.id} mealCard={mealCard} user={props.user} />
       ))}
     </main>
   )

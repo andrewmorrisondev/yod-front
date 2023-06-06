@@ -1,5 +1,5 @@
 // npm modules 
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { Routes, Route, useNavigate } from 'react-router-dom'
 
 // pages
@@ -67,7 +67,7 @@ function App(): JSX.Element {
           path="/mealCards"
           element={
             <ProtectedRoute user={user}>
-              <MealCardList />
+              {user !== null && <MealCardList user={user} />}
             </ProtectedRoute>
           }
         />        
