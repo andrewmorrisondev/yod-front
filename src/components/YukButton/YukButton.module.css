@@ -1,0 +1,13 @@
+.yukButton {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  background-color: red;
+  color: black;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+  cursor: pointer;
+}
