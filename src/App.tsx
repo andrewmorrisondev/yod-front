@@ -10,6 +10,7 @@ import Profiles from './pages/Profiles/Profiles'
 import ProfileDetails from './pages/ProfileDetails/ProfileDetails'
 import Landing from './pages/Landing/Landing'
 import MealCardList from './pages/MealCardList/MealCardList'
+import EditMealCard from './components/EditMealCard/EditMealCard'
 
 // components
 import NavBar from './components/NavBar/NavBar'
@@ -70,7 +71,15 @@ function App(): JSX.Element {
               {user !== null && <MealCardList user={user} />}
             </ProtectedRoute>
           }
-        />        
+        />
+        <Route
+          path="/mealCards/:id/edit"
+          element={
+            <ProtectedRoute user={user}>
+              {user !== null && <EditMealCard/>}
+            </ProtectedRoute>
+          }
+        />
         <Route
           path="/auth/signup"
           element={<Signup handleAuthEvt={handleAuthEvt} />}
