@@ -36,8 +36,40 @@ async function addPhoto(photoData: FormData, mealCardId: Number): Promise<MealCa
 	return await res.json()
 }
 
+async function deleteMealCard(mealCardId: Number): Promise<any> {
+  try {
+    const res = await fetch(`${BASE_URL}/${mealCardId}`, {
+      method: 'DELETE',
+      headers: {
+        'Authorization': `Bearer ${tokenService.getToken()}`
+      }
+    })
+    return await res.json()
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+async function editMealCard(mealCardId: Number, mealCardData: FormData): Promise<MealCard | undefined> {
+  try {
+    const res = await fetch(`${BASE_URL}/${mealCardId}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${tokenService.getToken()}`
+      },
+      body: JSON.stringify(mealCardData)
+    })
+    return await res.json()
+  } catch (error) {
+    console.log(error)
+  }
+}
+
 export {
   getAllMealCards,
   createMealCard,
-  addPhoto
+  addPhoto,
+  deleteMealCard,
+  editMealCard,
 }
