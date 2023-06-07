@@ -11,7 +11,8 @@ import styles from './MealCardList.module.css'
 import { MealCard, User } from '../../types/models'
 
 // components
-import MealCardComp from '../../components/MealCardComp/MealCardComp' 
+import MealCardComp from '../../components/MealCardComp/MealCardComp'
+import NewMealCard from '../../components/NewMealCard/NewMealCard'
 
 interface MealCardListProps {
   user: User
@@ -32,7 +33,12 @@ const MealCardList = (props: MealCardListProps): JSX.Element => {
     fetchMealCards()
   }, [])
 
-  if (!mealCards.length) return <main className={styles.MealCardList}><h1>nothing to swipe on</h1></main>
+  if (!mealCards.length) return (
+  <main className={styles.MealCardList}>
+    <h1>nothing to swipe on</h1>
+    <NewMealCard mealCards={mealCards} setMealCards={setMealCards}/>
+  </main>
+  )
 
   return (
     <main className={styles.MealCardList}>
