@@ -3,7 +3,7 @@ import * as tokenService from './tokenService'
 
 // types
 import { PhotoFormData } from '../types/forms'
-import { LikedMeal, Profile } from '../types/models'
+import { LikedMeal, PassedMeal, Profile } from '../types/models'
 
 const BASE_URL = `${import.meta.env.VITE_BACK_END_SERVER_URL}/api/profiles`
 
@@ -27,6 +27,14 @@ async function associateLikedMeals(profileId: Number, mealId: Number): Promise<L
     headers: { 'Authorization': `Bearer ${tokenService.getToken()}` },
   })
   return await res.json() as LikedMeal
+}
+
+async function associatePassedMeals(profileId: Number, mealId: Number): Promise<PassedMeal> {
+  const res = await fetch(`${BASE_URL}/${profileId}/passedMeals/${mealId}`, {
+    method: 'POST',
+    headers: { 'Authorization': `Bearer ${tokenService.getToken()}` },
+  })
+  return await res.json() as PassedMeal
 }
 
 
@@ -54,5 +62,6 @@ export {
   getAllProfiles, 
   getProfileById, 
   associateLikedMeals,
+  associatePassedMeals,
   addPhoto
 }
