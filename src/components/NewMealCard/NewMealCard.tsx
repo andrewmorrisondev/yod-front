@@ -39,6 +39,7 @@ const NewMealCard = (props: NewMealCardProps): JSX.Element => {
 
   const handleAddMeal = async (formData: FormData, photo?: File) => {
     const newMeal = await mealCardService.createMealCard(formData)
+    console.log(newMeal)
     if (photo) {
       newMeal.photo = await mealPhotoHelper(photo, newMeal.id)
     }
@@ -62,6 +63,7 @@ const NewMealCard = (props: NewMealCardProps): JSX.Element => {
           type="text"
           name="name"
           id="name"
+          onChange={handleChangeForm}
         />
       </label>
       <label htmlFor="photo-upload">Photo
