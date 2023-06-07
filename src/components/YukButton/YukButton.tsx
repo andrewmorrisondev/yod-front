@@ -12,7 +12,7 @@ interface YukButtonProps {
 const YukButton = (props: YukButtonProps): JSX.Element => {
   
   const handleClick = () => {
-    profileService.associateLikedMeals(props.profielId, props.mealCardId)
+    profileService.associatePassedMeals(props.profielId, props.mealCardId)
     console.log('yuk')
   }
 
