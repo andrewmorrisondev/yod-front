@@ -36,16 +36,22 @@ const MealCardList = (props: MealCardListProps): JSX.Element => {
   if (!mealCards.length) return (
   <main className={styles.MealCardList}>
     <h1>nothing to swipe on</h1>
-    <NewMealCard mealCards={mealCards} setMealCards={setMealCards}/>
   </main>
   )
-
+  
   return (
     <main className={styles.MealCardList}>
       <h1>Hello. This is a list of all the mealCards.</h1>
+      <NewMealCard mealCards={mealCards} setMealCards={setMealCards}/>
       {mealCards.map((mealCard: MealCard) => (
-        <MealCardComp key={mealCard.id} mealCard={mealCard} user={props.user} />
-      ))}
+        <MealCardComp 
+        key={mealCard.id} 
+        mealCard={mealCard} 
+        user={props.user} 
+        mealCards={mealCards}
+        setMealCards={setMealCards}
+        />
+        ))}
     </main>
   )
 }
