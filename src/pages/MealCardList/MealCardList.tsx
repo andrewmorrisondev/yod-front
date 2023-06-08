@@ -9,24 +9,24 @@ import * as profileService from '../../services/profileService'
 import styles from './MealCardList.module.css'
 
 // types
-import { MealCard, User, 
-  // LikedMeal, PassedMeal 
-} from '../../types/models'
+import { MealCard, User } from '../../types/models'
 
 // components
 import MealCardComp from '../../components/MealCardComp/MealCardComp'
 import NewMealCard from '../../components/NewMealCard/NewMealCard'
 
 interface MealCardListProps {
-  user: User
+  user: User,
+  mealCards: MealCard[],
+  setMealCards: React.Dispatch<React.SetStateAction<MealCard[]>>,
+  yukYumToggle: boolean,
+  setYukYumToggle: React.Dispatch<React.SetStateAction<boolean>>
 }
 
 const MealCardList = (props: MealCardListProps): JSX.Element => {
-  const [mealCards, setMealCards] = useState<MealCard[]>([])
+
   const [filteredMealCards, setFilteredMealCards] = useState<MealCard[]>([])
-  const [yukYumToggle, setYukYumToggle] = useState<boolean>(false)
-  // const [likedMeals, setLikedMeals] = useState<LikedMeal[]>([])
-  // const [passedMeals, setPassedMeals] = useState<PassedMeal[]>([])
+
 
   useEffect(() => {
     const fetchFiltredMealCards = async (): Promise<void> => {
@@ -38,13 +38,13 @@ const MealCardList = (props: MealCardListProps): JSX.Element => {
       }
     }
     fetchFiltredMealCards()
-  }, [yukYumToggle])
+  }, [props.yukYumToggle])
 
   useEffect(() => {
     const fetchMealCards = async (): Promise<void> => {
       try {
         const mealCardData: MealCard[] = await mealCardService.getAllMealCards()
-        setMealCards(mealCardData)
+        props.setMealCards(mealCardData)
       } catch (error) {
         console.log(error)
       }
@@ -56,17 +56,17 @@ const MealCardList = (props: MealCardListProps): JSX.Element => {
   return (
     <main className={styles.MealCardList}>
 
-      { !mealCards.length
+      { !props.mealCards.length
         ?
         <h1>nothing to swipe on</h1>
         :
         <>
           <h1>Hello. This is a list of all the mealCards.</h1>
           <NewMealCard 
-            mealCards={mealCards} 
-            setMealCards={setMealCards}
-            yukYumToggle={yukYumToggle}
-            setYukYumToggle={setYukYumToggle}
+            mealCards={props.mealCards} 
+            setMealCards={props.setMealCards}
+            yukYumToggle={props.yukYumToggle}
+            setYukYumToggle={props.setYukYumToggle}
           />
           {console.log(filteredMealCards)}
           {filteredMealCards.map((mealCard: MealCard) => (
@@ -74,10 +74,10 @@ const MealCardList = (props: MealCardListProps): JSX.Element => {
               key={mealCard.id} 
               mealCard={mealCard} 
               user={props.user} 
-              mealCards={mealCards}
-              setMealCards={setMealCards}
-              yukYumToggle={yukYumToggle}
-              setYukYumToggle={setYukYumToggle}
+              mealCards={props.mealCards}
+              setMealCards={props.setMealCards}
+              yukYumToggle={props.yukYumToggle}
+              setYukYumToggle={props.setYukYumToggle}
             />
           ))}
         </>

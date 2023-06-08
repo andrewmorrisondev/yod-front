@@ -22,7 +22,7 @@ const DeleteButton = (props: DeleteButtonProps): JSX.Element => {
     const updatedMealCards = props.mealCards.filter(
       (mealCard) => mealCard.id !== props.mealCardId
     )
-    props.setMealCards(updatedMealCards);
+    props.setMealCards(updatedMealCards)
     props.setYukYumToggle(!props.yukYumToggle)
   }
 

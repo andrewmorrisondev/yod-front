@@ -25,12 +25,15 @@ import './App.css'
 
 // types
 import {
-  User
+  User,
+  MealCard
 } from './types/models'
 
 function App(): JSX.Element {
   const [user, setUser] = useState<User | null>(authService.getUser())
   const navigate = useNavigate()
+  const [yukYumToggle, setYukYumToggle] = useState<boolean>(false)
+  const [mealCards, setMealCards] = useState<MealCard[]>([])
 
   
   const handleLogout = (): void => {
@@ -60,7 +63,14 @@ function App(): JSX.Element {
           path="/profiles/:id"
           element={
             <ProtectedRoute user={user}>
-                 {user !== null && <ProfileDetails user={user} />}
+                 {user !== null && 
+                  <ProfileDetails
+                    user={user}
+                    yukYumToggle={yukYumToggle}
+                    setYukYumToggle={setYukYumToggle}
+                    mealCards={mealCards}
+                    setMealCards={setMealCards}
+                  />}
             </ProtectedRoute>
           }
         />
@@ -68,7 +78,14 @@ function App(): JSX.Element {
           path="/mealCards"
           element={
             <ProtectedRoute user={user}>
-              {user !== null && <MealCardList user={user} />}
+              {user !== null && 
+              <MealCardList
+                user={user}
+                mealCards={mealCards}
+                setMealCards={setMealCards}
+                yukYumToggle={yukYumToggle}
+                setYukYumToggle={setYukYumToggle}
+              />}
             </ProtectedRoute>
           }
         />
