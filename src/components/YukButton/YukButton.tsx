@@ -11,7 +11,6 @@ interface YukButtonProps {
 }
 
 const YukButton = (props: YukButtonProps): JSX.Element => {
-  
   const handleClick = () => {
     profileService.associatePassedMeals(props.profielId, props.mealCardId)
     props.updateMealCards()

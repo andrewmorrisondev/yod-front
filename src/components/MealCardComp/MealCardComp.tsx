@@ -17,7 +17,6 @@ interface MealCardCompProps {
   mealCards: MealCard[],
   setMealCards: React.Dispatch<React.SetStateAction<MealCard[]>>,
   updateMealCards: () => void,
-  filterMealCards: () => MealCard[]
 }
 
 const MealCardComp = (props: MealCardCompProps): JSX.Element => {
@@ -32,12 +31,12 @@ const MealCardComp = (props: MealCardCompProps): JSX.Element => {
       <YumButton 
         profielId={props.user.id} 
         mealCardId={props.mealCard.id} 
-        updateMealCards={props.updateMealCards} 
+        updateMealCards={props.updateMealCards}
       />
       <YukButton 
         profielId={props.user.id} 
         mealCardId={props.mealCard.id} 
-        updateMealCards={props.filterMealCards} 
+        updateMealCards={props.updateMealCards}
       />
       {props.user.profile.id.toString() === props.mealCard.creatorId.toString() &&
         <>

@@ -21,12 +21,11 @@ interface MealCardListProps {
 
 const MealCardList = (props: MealCardListProps): JSX.Element => {
   const [mealCards, setMealCards] = useState<MealCard[]>([])
-  const [displayedMealCards, setDisplayedMealCards] = useState<MealCard[]>([])
+  const [filteredMealCards, setFilteredMealCards] = useState<MealCard[]>([])
   const [likedMeals, setLikedMeals] = useState<LikedMeal[]>([])
   const [passedMeals, setPassedMeals] = useState<PassedMeal[]>([])
 
   const filterMealCards = () => {
-    console.log(displayedMealCards)
     if (likedMeals.length === 0 && passedMeals.length === 0) {
       return mealCards
     }
@@ -44,8 +43,7 @@ const MealCardList = (props: MealCardListProps): JSX.Element => {
   }
 
   const updateMealCards = () => {
-    const filteredMealCards = filterMealCards()
-    setDisplayedMealCards(filteredMealCards)
+    setFilteredMealCards(filterMealCards())
   }
   
   useEffect(() => {
@@ -57,12 +55,6 @@ const MealCardList = (props: MealCardListProps): JSX.Element => {
       } catch (error) {
         console.log(error)
       }
-    }
-    fetchMealCards()
-  }, [])
-
-  useEffect(() => {
-    const fetchMealCards = async (): Promise<void> => {
       try {
         const passedMeals: PassedMeal[] = await profileService.getPassedMeals(props.user.id)
         setPassedMeals(passedMeals)
@@ -79,7 +71,7 @@ const MealCardList = (props: MealCardListProps): JSX.Element => {
       try {
         const mealCardData: MealCard[] = await mealCardService.getAllMealCards()
         setMealCards(mealCardData)
-        setDisplayedMealCards(filterMealCards())
+        updateMealCards()
       } catch (error) {
         console.log(error)
       }
@@ -97,7 +89,8 @@ const MealCardList = (props: MealCardListProps): JSX.Element => {
         <>
           <h1>Hello. This is a list of all the mealCards.</h1>
           <NewMealCard mealCards={mealCards} setMealCards={setMealCards}/>
-          {filterMealCards().map((mealCard: MealCard) => (
+          {console.log(filteredMealCards)}
+          {filteredMealCards.map((mealCard: MealCard) => (
             <MealCardComp 
               key={mealCard.id} 
               mealCard={mealCard} 
@@ -105,7 +98,6 @@ const MealCardList = (props: MealCardListProps): JSX.Element => {
               mealCards={mealCards}
               setMealCards={setMealCards}
               updateMealCards={updateMealCards}
-              filterMealCards={filterMealCards}
             />
           ))}
         </>

@@ -7,7 +7,7 @@ import * as profileService from '../../services/profileService'
 interface YumButtonProps {
   profielId: Number,
   mealCardId: Number,
-  updateMealCards: () => void,
+  updateMealCards: () => void
 }
 
 const YumButton = (props: YumButtonProps): JSX.Element => {
