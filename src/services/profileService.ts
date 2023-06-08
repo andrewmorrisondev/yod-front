@@ -37,6 +37,21 @@ async function associatePassedMeals(profileId: Number, mealId: Number): Promise<
   return await res.json() as PassedMeal
 }
 
+async function getLikedMeals(profileId: Number): Promise<LikedMeal[]> {
+  const res = await fetch(`${BASE_URL}/${profileId}/likedMeals`, {
+    method: 'GET',
+    headers: { 'Authorization': `Bearer ${tokenService.getToken()}` },
+  })
+  return await res.json() as LikedMeal[]
+}
+
+async function getPassedMeals(profileId: Number): Promise<PassedMeal[]> {
+  const res = await fetch(`${BASE_URL}/${profileId}/passedMeals`, {
+    method: 'GET',
+    headers: { 'Authorization': `Bearer ${tokenService.getToken()}` },
+  })
+  return await res.json() as PassedMeal[]
+}
 
 async function addPhoto(photoData: PhotoFormData): Promise<string> {
   if (!photoData.photo) throw new Error("No photo found.")
@@ -63,5 +78,7 @@ export {
   getProfileById, 
   associateLikedMeals,
   associatePassedMeals,
+  getLikedMeals,
+  getPassedMeals,
   addPhoto
 }
