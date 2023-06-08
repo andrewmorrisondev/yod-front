@@ -6,18 +6,18 @@ import * as profileService from '../../services/profileService'
 
 interface YumButtonProps {
   profielId: Number,
-  mealCardId: Number
+  mealCardId: Number,
+  updateMealCards: () => void,
 }
 
 const YumButton = (props: YumButtonProps): JSX.Element => {
-  
-  const handleClick = () => {
-    profileService.associateLikedMeals(props.profielId, props.mealCardId)
-    console.log('yum')
+  const handleClick = async () => {
+    await profileService.associateLikedMeals(props.profielId, props.mealCardId)
+    props.updateMealCards()
   }
 
   return (
-    <div className={styles.yumButton} onClick={() => handleClick()}>
+    <div className={styles.yumButton} onClick={handleClick}>
       <p>Yum</p>
     </div>
   )
