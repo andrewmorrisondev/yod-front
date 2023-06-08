@@ -9,7 +9,9 @@ import * as profileService from '../../services/profileService'
 import styles from './MealCardList.module.css'
 
 // types
-import { MealCard, User, LikedMeal, PassedMeal } from '../../types/models'
+import { MealCard, User, 
+  // LikedMeal, PassedMeal 
+} from '../../types/models'
 
 // components
 import MealCardComp from '../../components/MealCardComp/MealCardComp'
@@ -22,56 +24,27 @@ interface MealCardListProps {
 const MealCardList = (props: MealCardListProps): JSX.Element => {
   const [mealCards, setMealCards] = useState<MealCard[]>([])
   const [filteredMealCards, setFilteredMealCards] = useState<MealCard[]>([])
-  const [likedMeals, setLikedMeals] = useState<LikedMeal[]>([])
-  const [passedMeals, setPassedMeals] = useState<PassedMeal[]>([])
+  const [yukYumToggle, setYukYumToggle] = useState<boolean>(false)
+  // const [likedMeals, setLikedMeals] = useState<LikedMeal[]>([])
+  // const [passedMeals, setPassedMeals] = useState<PassedMeal[]>([])
 
-  const filterMealCards = () => {
-    if (likedMeals.length === 0 && passedMeals.length === 0) {
-      return mealCards
-    }
-  
-    const filteredMealCards = mealCards.filter((mealCard: MealCard) => {
-      const likedMealIds = likedMeals.map((likedMeal: LikedMeal) => likedMeal.mealCardId)
-      const passedMealIds = passedMeals.map((passedMeal: PassedMeal) => passedMeal.mealCardId)
-    
-      const isLiked = likedMealIds.includes(mealCard.id)
-      const isPassed = passedMealIds.includes(mealCard.id)
-    
-      return !isLiked && !isPassed
-    })
-    return filteredMealCards
-  }
-
-  const updateMealCards = () => {
-    setFilteredMealCards(filterMealCards())
-  }
-  
   useEffect(() => {
-    const fetchMealCards = async (): Promise<void> => {
+    const fetchFiltredMealCards = async (): Promise<void> => {
       try {
-        const likedMeals: LikedMeal[] = await profileService.getLikedMeals(props.user.id)
-        setLikedMeals(likedMeals)
-        updateMealCards()
-      } catch (error) {
-        console.log(error)
-      }
-      try {
-        const passedMeals: PassedMeal[] = await profileService.getPassedMeals(props.user.id)
-        setPassedMeals(passedMeals)
-        updateMealCards()
+        const filteredMealCards: MealCard[] | undefined = await profileService.getFilteredMealCards(props.user.id)
+        filteredMealCards && setFilteredMealCards(filteredMealCards)
       } catch (error) {
         console.log(error)
       }
     }
-    fetchMealCards()
-  }, [])
+    fetchFiltredMealCards()
+  }, [yukYumToggle])
 
   useEffect(() => {
     const fetchMealCards = async (): Promise<void> => {
       try {
         const mealCardData: MealCard[] = await mealCardService.getAllMealCards()
         setMealCards(mealCardData)
-        updateMealCards()
       } catch (error) {
         console.log(error)
       }
@@ -82,13 +55,19 @@ const MealCardList = (props: MealCardListProps): JSX.Element => {
 
   return (
     <main className={styles.MealCardList}>
+
       { !mealCards.length
         ?
         <h1>nothing to swipe on</h1>
         :
         <>
           <h1>Hello. This is a list of all the mealCards.</h1>
-          <NewMealCard mealCards={mealCards} setMealCards={setMealCards}/>
+          <NewMealCard 
+            mealCards={mealCards} 
+            setMealCards={setMealCards}
+            yukYumToggle={yukYumToggle}
+            setYukYumToggle={setYukYumToggle}
+          />
           {console.log(filteredMealCards)}
           {filteredMealCards.map((mealCard: MealCard) => (
             <MealCardComp 
@@ -97,7 +76,8 @@ const MealCardList = (props: MealCardListProps): JSX.Element => {
               user={props.user} 
               mealCards={mealCards}
               setMealCards={setMealCards}
-              updateMealCards={updateMealCards}
+              yukYumToggle={yukYumToggle}
+              setYukYumToggle={setYukYumToggle}
             />
           ))}
         </>

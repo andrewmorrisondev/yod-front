@@ -10,7 +10,9 @@ import { MealCard } from '../../types/models'
 interface DeleteButtonProps {
   mealCardId: Number,
   mealCards: MealCard[],
-  setMealCards: React.Dispatch<React.SetStateAction<MealCard[]>>
+  setMealCards: React.Dispatch<React.SetStateAction<MealCard[]>>,
+  yukYumToggle: boolean,
+  setYukYumToggle: React.Dispatch<React.SetStateAction<boolean>>
 }
 
 const DeleteButton = (props: DeleteButtonProps): JSX.Element => {
@@ -21,6 +23,7 @@ const DeleteButton = (props: DeleteButtonProps): JSX.Element => {
       (mealCard) => mealCard.id !== props.mealCardId
     )
     props.setMealCards(updatedMealCards);
+    props.setYukYumToggle(!props.yukYumToggle)
   }
 
   return (

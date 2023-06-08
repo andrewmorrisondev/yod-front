@@ -3,7 +3,7 @@ import * as tokenService from './tokenService'
 
 // types
 import { PhotoFormData } from '../types/forms'
-import { LikedMeal, PassedMeal, Profile } from '../types/models'
+import { LikedMeal, PassedMeal, Profile, MealCard } from '../types/models'
 
 const BASE_URL = `${import.meta.env.VITE_BACK_END_SERVER_URL}/api/profiles`
 
@@ -53,6 +53,14 @@ async function getPassedMeals(profileId: Number): Promise<PassedMeal[]> {
   return await res.json() as PassedMeal[]
 }
 
+async function getFilteredMealCards(profileId: Number): Promise<MealCard[] | undefined > {
+  const res = await fetch(`${BASE_URL}/${profileId}/filteredMealCards`, {
+    method: 'GET',
+    headers: { 'Authorization': `Bearer ${tokenService.getToken()}` },
+  })
+  return await res.json() as MealCard[]
+}
+
 async function addPhoto(photoData: PhotoFormData): Promise<string> {
   if (!photoData.photo) throw new Error("No photo found.")
   
@@ -80,5 +88,6 @@ export {
   associatePassedMeals,
   getLikedMeals,
   getPassedMeals,
+  getFilteredMealCards,
   addPhoto
 }

@@ -25,3 +25,11 @@ export interface ChangePasswordFormData {
 export interface PhotoFormData {
   photo: File | null;
 }
+
+export interface MealCardFormData {
+  name: string;
+  about: string;
+  photo: File | null;
+  resturantName: string;
+  resturantAddress: string;
+}

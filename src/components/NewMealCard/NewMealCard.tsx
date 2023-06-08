@@ -10,6 +10,8 @@ import { MealCard } from '../../types/models'
 interface NewMealCardProps {
   mealCards: MealCard[],
   setMealCards: React.Dispatch<React.SetStateAction<MealCard[]>>
+  yukYumToggle: boolean,
+  setYukYumToggle: React.Dispatch<React.SetStateAction<boolean>>
 }
 
 type PhotoData = {
@@ -45,8 +47,8 @@ const NewMealCard = (props: NewMealCardProps): JSX.Element => {
     }
     setMealCards([...mealCards, newMeal])
   }
-
-
+  
+  
   const handleSubmit = (evt: React.FormEvent<HTMLFormElement>) => {
     evt.preventDefault()
     if (photoData && photoData.photo) {
@@ -54,6 +56,12 @@ const NewMealCard = (props: NewMealCardProps): JSX.Element => {
     } else {
       handleAddMeal(formData, undefined)
     }
+    setFormData(new FormData())
+    const inputElements = Array.from(document.querySelectorAll('input'));
+    inputElements.forEach((input) => {
+      input.value = '';
+    });
+    props.setYukYumToggle(!props.yukYumToggle)
   }
   
   return (

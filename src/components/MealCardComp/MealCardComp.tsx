@@ -16,7 +16,8 @@ interface MealCardCompProps {
   user: User,
   mealCards: MealCard[],
   setMealCards: React.Dispatch<React.SetStateAction<MealCard[]>>,
-  updateMealCards: () => void,
+  yukYumToggle: boolean,
+  setYukYumToggle: React.Dispatch<React.SetStateAction<boolean>>
 }
 
 const MealCardComp = (props: MealCardCompProps): JSX.Element => {
@@ -30,17 +31,27 @@ const MealCardComp = (props: MealCardCompProps): JSX.Element => {
       <div className={styles.buttons}>
       <YumButton 
         profielId={props.user.id} 
-        mealCardId={props.mealCard.id} 
-        updateMealCards={props.updateMealCards}
+        mealCardId={props.mealCard.id}
+        yukYumToggle={props.yukYumToggle}
+        setYukYumToggle={props.setYukYumToggle} 
+
       />
       <YukButton 
         profielId={props.user.id} 
         mealCardId={props.mealCard.id} 
-        updateMealCards={props.updateMealCards}
+        yukYumToggle={props.yukYumToggle}
+        setYukYumToggle={props.setYukYumToggle}
+
       />
       {props.user.profile.id.toString() === props.mealCard.creatorId.toString() &&
         <>
-          <DeleteButton mealCardId={props.mealCard.id} mealCards={props.mealCards} setMealCards={props.setMealCards} />
+          <DeleteButton 
+            mealCardId={props.mealCard.id} 
+            mealCards={props.mealCards} 
+            setMealCards={props.setMealCards}
+            yukYumToggle={props.yukYumToggle}
+            setYukYumToggle={props.setYukYumToggle} 
+          />
           <EditButton mealCardId={props.mealCard.id} mealCard={props.mealCard} />
         </>
       }
