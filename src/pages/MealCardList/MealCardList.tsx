@@ -26,6 +26,7 @@ const MealCardList = (props: MealCardListProps): JSX.Element => {
   const [passedMeals, setPassedMeals] = useState<PassedMeal[]>([])
 
   const filterMealCards = () => {
+    console.log(displayedMealCards)
     if (likedMeals.length === 0 && passedMeals.length === 0) {
       return mealCards
     }
