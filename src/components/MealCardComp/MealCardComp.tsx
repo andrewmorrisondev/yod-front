@@ -7,7 +7,6 @@ import YukButton from "../YukButton/YukButton"
 import DeleteButton from "../DeleteButton/DeleteButton"
 import EditButton from "../EditButton/EditButton"
 
-
 // css
 import styles from './MealCardComp.module.css'
 
@@ -16,7 +15,9 @@ interface MealCardCompProps {
   mealCard: MealCard,
   user: User,
   mealCards: MealCard[],
-  setMealCards: React.Dispatch<React.SetStateAction<MealCard[]>>
+  setMealCards: React.Dispatch<React.SetStateAction<MealCard[]>>,
+  updateMealCards: () => void,
+  filterMealCards: () => MealCard[]
 }
 
 const MealCardComp = (props: MealCardCompProps): JSX.Element => {
@@ -28,8 +29,16 @@ const MealCardComp = (props: MealCardCompProps): JSX.Element => {
         <img src={props.mealCard.photo} alt={props.mealCard.name} />
       </div>
       <div className={styles.buttons}>
-      <YumButton profielId={props.user.id} mealCardId={props.mealCard.id} />
-      <YukButton profielId={props.user.id} mealCardId={props.mealCard.id} />
+      <YumButton 
+        profielId={props.user.id} 
+        mealCardId={props.mealCard.id} 
+        updateMealCards={props.updateMealCards} 
+      />
+      <YukButton 
+        profielId={props.user.id} 
+        mealCardId={props.mealCard.id} 
+        updateMealCards={props.filterMealCards} 
+      />
       {props.user.profile.id.toString() === props.mealCard.creatorId.toString() &&
         <>
           <DeleteButton mealCardId={props.mealCard.id} mealCards={props.mealCards} setMealCards={props.setMealCards} />
