@@ -62,15 +62,9 @@ const MealCardList = (props: MealCardListProps): JSX.Element => {
         :
         <>
           <h1>Hello. This is a list of all the mealCards.</h1>
-          <NewMealCard 
-            mealCards={props.mealCards} 
-            setMealCards={props.setMealCards}
-            yukYumToggle={props.yukYumToggle}
-            setYukYumToggle={props.setYukYumToggle}
-          />
           {console.log(filteredMealCards)}
           {filteredMealCards.map((mealCard: MealCard) => (
-            <MealCardComp 
+              <MealCardComp 
               key={mealCard.id} 
               mealCard={mealCard} 
               user={props.user} 
@@ -79,9 +73,15 @@ const MealCardList = (props: MealCardListProps): JSX.Element => {
               yukYumToggle={props.yukYumToggle}
               setYukYumToggle={props.setYukYumToggle}
             />
-          ))}
+            ))}
         </>
       }
+      <NewMealCard 
+        mealCards={props.mealCards} 
+        setMealCards={props.setMealCards}
+        yukYumToggle={props.yukYumToggle}
+        setYukYumToggle={props.setYukYumToggle}
+      />
     </main>
   )
 }

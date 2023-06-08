@@ -32,6 +32,7 @@ const ProfileDetails = (props: ProfileDetailsProps): JSX.Element => {
       try {
         const profileData: Profile = await profileService.getProfileById(user.id)
         setProfile(profileData)
+        console.log(profile)
       } catch (error) {
         console.log(error)
       }
@@ -45,7 +46,7 @@ const ProfileDetails = (props: ProfileDetailsProps): JSX.Element => {
         const mealCards: MealCard[] | undefined = await mealCardService.getAllMealCards()
         const likedMeals: LikedMeal[] | undefined = await profileService.getLikedMeals(user.id)
         const likedMealIds: number[] = likedMeals?.map((likedMeal: LikedMeal) => likedMeal.mealCardId) || []
-        const filteredMealCards: MealCard[] = mealCards?.filter((mealCard: MealCard) => !likedMealIds.includes(mealCard.id)) || []
+        const filteredMealCards: MealCard[] = mealCards?.filter((mealCard: MealCard) => likedMealIds.includes(mealCard.id)) || []
         setLikedMeals(filteredMealCards)
       } catch (error) {
         console.log(error)
