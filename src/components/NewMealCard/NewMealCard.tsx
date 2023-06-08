@@ -45,7 +45,7 @@ const NewMealCard = (props: NewMealCardProps): JSX.Element => {
     }
     setMealCards([...mealCards, newMeal])
   }
-  
+
 
   const handleSubmit = (evt: React.FormEvent<HTMLFormElement>) => {
     evt.preventDefault()
@@ -63,6 +63,7 @@ const NewMealCard = (props: NewMealCardProps): JSX.Element => {
           type="text"
           name="name"
           id="name"
+          placeholder='Beef Wellington'
           onChange={handleChangeForm}
         />
       </label>
@@ -79,6 +80,7 @@ const NewMealCard = (props: NewMealCardProps): JSX.Element => {
           type="text"
           name="about"
           id="about"
+          placeholder="As seen on TV"
           onChange={handleChangeForm}
         />
       </label>
@@ -87,6 +89,7 @@ const NewMealCard = (props: NewMealCardProps): JSX.Element => {
           type="text"
           name="resturantName"
           id="resturantName"
+          placeholder="Hell's Kitchen"
           onChange={handleChangeForm}
         />
       </label>
@@ -96,6 +99,7 @@ const NewMealCard = (props: NewMealCardProps): JSX.Element => {
           name="resturantAddress"
           id="resturantAddress"
           onChange={handleChangeForm}
+          placeholder='www.gordonramsayrestaurants.com'
         />
       </label>
       <button type="submit">Submit</button>
