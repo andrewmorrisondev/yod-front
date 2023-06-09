@@ -1,6 +1,5 @@
 // npm modules
 import { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
 
 // css
 import styles from './ProfileDetails.module.css'

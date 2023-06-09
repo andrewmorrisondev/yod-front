@@ -4,8 +4,6 @@ import { MealCard, User } from "../../types/models"
 // components
 import YumButton from "../YumButton/YumButton"
 import YukButton from "../YukButton/YukButton"
-import DeleteButton from "../DeleteButton/DeleteButton"
-import EditButton from "../EditButton/EditButton"
 
 // css
 import styles from './MealCardComp.module.css'
