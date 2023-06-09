@@ -4,6 +4,7 @@
 backend
 </a>
 
+</br>
 
 Yuk-or-Yum is a full-stack web application that allows users to share their favorite meals with the world. Users can create, edit, and delete their own meals, as well as say Yum or Yuk to other users' meals. Users can also see all the meals they have liked, and where to find them.
 
