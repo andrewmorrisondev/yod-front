@@ -14,7 +14,7 @@ interface EditButtonProps {
 const EditButton = (props: EditButtonProps): JSX.Element => {
 
   return (
-    <Link to={`${props.mealCardId}/edit`} state={props.mealCard}>
+    <Link to={`../../mealCards/${props.mealCardId}/edit/`} state={props.mealCard}>
       <div className={styles.editButton}>
         <p>Edit</p>
       </div>

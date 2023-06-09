@@ -3,3 +3,10 @@
   align-items: center;
   flex-direction: column;
 }
+
+.title {
+  color: #FFC107;
+  font-size: 160px;
+  font-family: 'Moirai One', cursive;
+  margin-top: 200px;
+}

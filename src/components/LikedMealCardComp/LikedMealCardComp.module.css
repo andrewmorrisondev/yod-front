@@ -2,6 +2,7 @@
   height: 418px;
   width: 880px;
   border: 9px solid red;
+  margin-bottom: 20px;
   border-radius: 5px;
   display: flex;
   flex-direction: row;

@@ -1,0 +1,25 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.container > h1 {
+  font-size: 80px;
+  color: #FFC107;
+  margin: 0;
+}
+
+.link {
+  background-color: #FFC107;
+  padding: 10px 20px;
+  margin-right: -600px;
+  margin-top: -80px;
+  margin-bottom: 80px;
+  cursor: pointer;
+}
+
+.navSpacer {
+  height: 140px;
+}

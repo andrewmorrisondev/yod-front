@@ -35,7 +35,7 @@ const EditMealCard = () => {
       formData.append('photo', photoData.photo);
     }
     await mealCardService.editMealCard(mealCard.id, formData)
-    navigate(`/mealCards`)
+    navigate(`/profiles/${mealCard.creatorId}`)
   }
 
   const handleSubmit = async (evt: React.FormEvent): Promise<void> => {
@@ -45,58 +45,61 @@ const EditMealCard = () => {
 
 
   return (
-    <form onSubmit={handleSubmit} className={styles.editMealCardForm}>
-      <label htmlFor="name">
-        Name
-        <input
-          type="text"
-          name="name"
-          id="name"
-          value={formData.name}
-          onChange={handleChange}
-        />
-      </label>
-      <label htmlFor="photo-upload">
-        Photo
-        <input
-          type="file"
-          id="photo-upload"
-          name="photo"
-          onChange={handleChangePhoto}
-        />
-      </label>
-      <label htmlFor="about">
-        About
-        <input
-          type="text"
-          name="about"
-          id="about"
-          value={formData.about}
-          onChange={handleChange}
-        />
-      </label>
-      <label htmlFor="resturantName">
-        Restaurant Name
-        <input
-          type="text"
-          name="resturantName"
-          id="resturantName"
-          value={formData.resturantName}
-          onChange={handleChange}
-        />
-      </label>
-      <label htmlFor="resturantAddress">
-        Restaurant Address
-        <input
-          type="text"
-          name="resturantAddress"
-          id="resturantAddress"
-          value={formData.resturantAddress}
-          onChange={handleChange}
-        />
-      </label>
-      <button type="submit">Submit</button>
-    </form>
+    <div className={styles.formHolder}> 
+      <h1>Edit Meal Card</h1>
+      <form onSubmit={handleSubmit} className={styles.editMealCardForm}>
+        <label htmlFor="name">
+          Name
+          <input
+            type="text"
+            name="name"
+            id="name"
+            value={formData.name}
+            onChange={handleChange}
+          />
+        </label>
+        <label htmlFor="photo-upload">
+          Photo
+          <input
+            type="file"
+            id="photo-upload"
+            name="photo"
+            onChange={handleChangePhoto}
+          />
+        </label>
+        <label htmlFor="about">
+          About
+          <input
+            type="text"
+            name="about"
+            id="about"
+            value={formData.about}
+            onChange={handleChange}
+          />
+        </label>
+        <label htmlFor="resturantName">
+          Restaurant Name
+          <input
+            type="text"
+            name="resturantName"
+            id="resturantName"
+            value={formData.resturantName}
+            onChange={handleChange}
+          />
+        </label>
+        <label htmlFor="resturantAddress">
+          Restaurant Address
+          <input
+            type="text"
+            name="resturantAddress"
+            id="resturantAddress"
+            value={formData.resturantAddress}
+            onChange={handleChange}
+          />
+        </label>
+        <button type="submit">Submit</button>
+      </form>
+    </div>
   )
 }
 

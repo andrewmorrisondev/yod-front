@@ -42,21 +42,6 @@ const MealCardComp = (props: MealCardCompProps): JSX.Element => {
             setYukYumToggle={props.setYukYumToggle}
             />
         </div>
-          {props.user.profile.id.toString() === props.mealCard.creatorId.toString() &&
-            <>
-              <DeleteButton 
-                mealCardId={props.mealCard.id} 
-                mealCards={props.mealCards} 
-                setMealCards={props.setMealCards}
-                yukYumToggle={props.yukYumToggle}
-                setYukYumToggle={props.setYukYumToggle} 
-                />
-              <EditButton 
-                mealCardId={props.mealCard.id} 
-                mealCard={props.mealCard} 
-                />
-            </>
-          }
       </div>
     </>
   )

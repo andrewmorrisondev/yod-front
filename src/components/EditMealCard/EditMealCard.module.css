@@ -1,11 +1,55 @@
+.editMealCardForm > label {
+  color: #D8AF37;
+}
 .editMealCardForm {
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 200px;
 }
 
 .editMealCardForm input {
-  width: 100%;
+  width: 200px;
+  height: 60px;
   margin-bottom: 10px;
+  margin-right: 12px;
+  border-radius: 5px;
+  background-color: #D8AF37;
+  color: #090F61;
 }
 
+.editMealCardForm button {
+  width: 180px;
+  height: 40px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  background-color: #D8AF37;
+  color: #090F61;
+  font-size: 20px;
+  margin-left: 6px;
+}
+
+.editMealCardForm input[type='file'] {
+  height: 28px;
+}
+
+.editMealCardForm input::placeholder {
+  color: #090F61;
+}
+
+.editMealCardForm ::placeholder {
+  color: #090F61;
+}
+
+.formHolder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  margin-top: 20px;
+}
+
+.formHolder > h1 {
+  color: #D8AF37;
+  margin-bottom: 20px;
+}

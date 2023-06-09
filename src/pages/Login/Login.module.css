@@ -26,6 +26,11 @@ input {
   margin-bottom: 50px;
 }
 
+.form * {
+  color: #FFC107;
+  background-color: #090F61;
+}
+
 .label {
   width: 100%;
   display: flex;
@@ -40,4 +45,8 @@ input {
 
 .form > label:last-of-type {
   margin-bottom: 16px;
+}
+
+.title {
+  color: #FFC107;
 }

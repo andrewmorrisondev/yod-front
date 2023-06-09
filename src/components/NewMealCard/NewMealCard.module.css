@@ -14,16 +14,32 @@
   width: 200px;
   height: 60px;
   margin-bottom: 10px;
+  margin-right: 12px;
   border-radius: 5px;
   background-color: #D8AF37;
-  color: #D85E5E;
+  color: #090F61;
 }
 
-.newMealCardForm input[type=""] {
+.newMealCardForm button {
+  width: 180px;
+  height: 40px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  background-color: #D8AF37;
+  color: #090F61;
+  font-size: 20px;
+  margin-left: 6px;
+}
 
+.newMealCardForm input[type='file'] {
+  height: 28px;
+}
+
+.newMealCardForm input::placeholder {
+  color: #090F61;
 }
 
 .newMealCardForm ::placeholder {
-  color: #D85E5E;
+  color: #090F61;
 }
 

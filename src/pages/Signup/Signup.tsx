@@ -88,7 +88,7 @@ const Signup = (props: AuthPageProps): JSX.Element => {
 
   return (
     <main className={styles.container}>
-      <h1>Sign Up</h1>
+      <h1 className={styles.title}>Sign Up</h1>
       <p className={styles.message}>{message}</p>
       <form autoComplete="off" onSubmit={handleSubmit} className={styles.form}>
         <label className={styles.label}>

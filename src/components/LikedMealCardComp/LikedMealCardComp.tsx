@@ -34,7 +34,7 @@ const LikedMealCardComp = (props: LikedMealCardCompProps): JSX.Element => {
       
       <div className={styles.buttons}>
       {props.user.profile.id.toString() === props.mealCard.creatorId.toString() &&
-        <>
+        <div className={styles.crudButtons}>
           <DeleteButton 
             mealCardId={props.mealCard.id} 
             mealCards={props.mealCards} 
@@ -43,7 +43,7 @@ const LikedMealCardComp = (props: LikedMealCardCompProps): JSX.Element => {
             setYukYumToggle={props.setYukYumToggle} 
           />
           <EditButton mealCardId={props.mealCard.id} mealCard={props.mealCard} />
-        </>
+        </div>
       }
       </div>
     </div>

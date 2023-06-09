@@ -59,19 +59,22 @@ const ProfileDetails = (props: ProfileDetailsProps): JSX.Element => {
   return (
     <>
       <main className={styles.container}>
-        <h1>Hi there {user.name}!</h1>
-        <Link to="/auth/change-password">Change Password</Link>
-        {likedMeals.map((mealCard: MealCard) => (
-            <LikedMealCardComp 
-              key={mealCard.id} 
-              mealCard={mealCard} 
-              mealCards={props.mealCards}
-              user={props.user} 
-              setMealCards={props.setMealCards}
-              yukYumToggle={props.yukYumToggle}
-              setYukYumToggle={props.setYukYumToggle}
-            />
-          ))}
+        <h1>{user.name}'s Yums</h1>
+        <a href="/auth/change-password" className={styles.link}>Change Password</a>
+        <div className={styles.mealCards}>
+          {likedMeals.map((mealCard: MealCard) => (
+              <LikedMealCardComp 
+                key={mealCard.id} 
+                mealCard={mealCard} 
+                mealCards={props.mealCards}
+                user={props.user} 
+                setMealCards={props.setMealCards}
+                yukYumToggle={props.yukYumToggle}
+                setYukYumToggle={props.setYukYumToggle}
+              />
+            ))}
+        </div>
+        <div className={styles.navSpacer}></div>
       </main>
     </>
   )

@@ -33,8 +33,8 @@ nav > ul {
 }
 
 * {
-  box-sizing: border-box;
-  border: 1px solid blue;
+  /* box-sizing: border-box;
+  border: 1px solid blue; */
   color: #1422E0;
   font-family: 'Indie Flower', cursive;
 }
