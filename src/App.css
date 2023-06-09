@@ -13,7 +13,7 @@ body {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
 
   color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  background-color: #090F61;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -24,7 +24,7 @@ body {
 
 a,
 a:visited {
-  color: #00d8ff
+  color: #090F61;
 }
 
 nav > ul {
@@ -32,3 +32,9 @@ nav > ul {
   padding: 16px 32px;
 }
 
+* {
+  box-sizing: border-box;
+  border: 1px solid blue;
+  color: #1422E0;
+  font-family: 'Indie Flower', cursive;
+}

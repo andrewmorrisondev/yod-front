@@ -1,0 +1,22 @@
+.mealCardList {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.mealCardList > * {
+  margin-top: 40px;
+}
+
+.navBarSpacer {
+  height: 130px;
+}
+
+.heading {
+  color: #FFC107;
+  text-align: center;
+  font-family: 'Moirai One', cursive;
+  font-size: 70px;
+  margin-bottom: 0;
+  margin-top: 0;
+}

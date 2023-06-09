@@ -66,7 +66,7 @@ const NewMealCard = (props: NewMealCardProps): JSX.Element => {
   
   return (
     <form onSubmit={handleSubmit} className={styles.newMealCardForm}>
-      <label htmlFor="name">Name
+      <label htmlFor="name">Name</label>
         <input 
           type="text"
           name="name"
@@ -74,16 +74,9 @@ const NewMealCard = (props: NewMealCardProps): JSX.Element => {
           placeholder='Beef Wellington'
           onChange={handleChangeForm}
         />
-      </label>
-      <label htmlFor="photo-upload">Photo
-        <input 
-          type="file"
-          id="photo-upload"
-          name="photo"
-          onChange={handleChangePhoto}
-        />
-      </label>
-      <label htmlFor="about">About
+      
+      
+      <label htmlFor="about">About</label>
         <input 
           type="text"
           name="about"
@@ -91,8 +84,8 @@ const NewMealCard = (props: NewMealCardProps): JSX.Element => {
           placeholder="As seen on TV"
           onChange={handleChangeForm}
         />
-      </label>
-      <label htmlFor="resturantName">Resturant Name
+      
+      <label htmlFor="resturantName">Resturant Name</label>
         <input
           type="text"
           name="resturantName"
@@ -100,8 +93,8 @@ const NewMealCard = (props: NewMealCardProps): JSX.Element => {
           placeholder="Hell's Kitchen"
           onChange={handleChangeForm}
         />
-      </label>
-      <label htmlFor="resturantAddress">Resturant Address
+      
+      <label htmlFor="resturantAddress">Resturant Address</label>
         <input
           type="text"
           name="resturantAddress"
@@ -109,7 +102,14 @@ const NewMealCard = (props: NewMealCardProps): JSX.Element => {
           onChange={handleChangeForm}
           placeholder='www.gordonramsayrestaurants.com'
         />
-      </label>
+      
+      <label htmlFor="photo-upload">Photo</label>
+        <input 
+          type="file"
+          id="photo-upload"
+          name="photo"
+          onChange={handleChangePhoto}
+        />
       <button type="submit">Submit</button>
     </form>
   )

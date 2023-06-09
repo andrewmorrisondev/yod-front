@@ -1,13 +1,23 @@
 .yumButton {
-  height: 50px;
-  width: 50px;
+  height: 54px;
+  width: 54px;
   border-radius: 50%;
   background-color: #FFC107;
+  border: 3px solid red;
   color: black;
+  margin-top: 3px;
 
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 1;
   cursor: pointer;
+  transition: all .2s ease-in-out; 
+}
+
+.yumButton:hover {
+  transform: scale(0.9); 
+}
+
+.yumButton > i {
+  color: red;
 }

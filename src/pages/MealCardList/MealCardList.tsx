@@ -55,33 +55,35 @@ const MealCardList = (props: MealCardListProps): JSX.Element => {
 
   return (
     <main className={styles.MealCardList}>
-
+      <h1 className={styles.heading}>Yuk-or-Yum?</h1>
       { !props.mealCards.length
         ?
         <h1>nothing to swipe on</h1>
         :
         <>
-          <h1>Hello. This is a list of all the mealCards.</h1>
           {console.log(filteredMealCards)}
-          {filteredMealCards.map((mealCard: MealCard) => (
-              <MealCardComp 
-              key={mealCard.id} 
-              mealCard={mealCard} 
-              user={props.user} 
-              mealCards={props.mealCards}
+          <div className={styles.mealCardList}>
+            <NewMealCard 
+              mealCards={props.mealCards} 
               setMealCards={props.setMealCards}
               yukYumToggle={props.yukYumToggle}
               setYukYumToggle={props.setYukYumToggle}
             />
+            {filteredMealCards.map((mealCard: MealCard) => (
+              <MealCardComp 
+                key={mealCard.id} 
+                mealCard={mealCard} 
+                user={props.user} 
+                mealCards={props.mealCards}
+                setMealCards={props.setMealCards}
+                yukYumToggle={props.yukYumToggle}
+                setYukYumToggle={props.setYukYumToggle}
+              />
             ))}
+          </div>
+          <div className={styles.navBarSpacer}></div>
         </>
       }
-      <NewMealCard 
-        mealCards={props.mealCards} 
-        setMealCards={props.setMealCards}
-        yukYumToggle={props.yukYumToggle}
-        setYukYumToggle={props.setYukYumToggle}
-      />
     </main>
   )
 }

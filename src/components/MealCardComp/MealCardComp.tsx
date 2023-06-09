@@ -23,40 +23,42 @@ interface MealCardCompProps {
 const MealCardComp = (props: MealCardCompProps): JSX.Element => {
   
   return (
-    <div className={styles.mealCard}>
-      <div className={styles.data}>
+    <>
+      <div className={styles.mealCard}>
+        <img src={props.mealCard.photo} alt={props.mealCard.name} className={styles.foodImg} />
         <h1>{props.mealCard.name}</h1>
-        <img src={props.mealCard.photo} alt={props.mealCard.name} />
-      </div>
-      <div className={styles.buttons}>
-      <YumButton 
-        profielId={props.user.id} 
-        mealCardId={props.mealCard.id}
-        yukYumToggle={props.yukYumToggle}
-        setYukYumToggle={props.setYukYumToggle} 
-
-      />
-      <YukButton 
-        profielId={props.user.id} 
-        mealCardId={props.mealCard.id} 
-        yukYumToggle={props.yukYumToggle}
-        setYukYumToggle={props.setYukYumToggle}
-
-      />
-      {props.user.profile.id.toString() === props.mealCard.creatorId.toString() &&
-        <>
-          <DeleteButton 
-            mealCardId={props.mealCard.id} 
-            mealCards={props.mealCards} 
-            setMealCards={props.setMealCards}
+        <div className={styles.buttons}>
+          <YumButton 
+            profielId={props.user.id} 
+            mealCardId={props.mealCard.id}
             yukYumToggle={props.yukYumToggle}
             setYukYumToggle={props.setYukYumToggle} 
-          />
-          <EditButton mealCardId={props.mealCard.id} mealCard={props.mealCard} />
-        </>
-      }
+            
+            />
+          <YukButton 
+            profielId={props.user.id} 
+            mealCardId={props.mealCard.id} 
+            yukYumToggle={props.yukYumToggle}
+            setYukYumToggle={props.setYukYumToggle}
+            />
+        </div>
+          {props.user.profile.id.toString() === props.mealCard.creatorId.toString() &&
+            <>
+              <DeleteButton 
+                mealCardId={props.mealCard.id} 
+                mealCards={props.mealCards} 
+                setMealCards={props.setMealCards}
+                yukYumToggle={props.yukYumToggle}
+                setYukYumToggle={props.setYukYumToggle} 
+                />
+              <EditButton 
+                mealCardId={props.mealCard.id} 
+                mealCard={props.mealCard} 
+                />
+            </>
+          }
       </div>
-    </div>
+    </>
   )
 }
 

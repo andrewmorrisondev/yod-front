@@ -1,0 +1,40 @@
+.navBar {
+  position: fixed;
+  background-color: rgba(255,193,8,0.9);
+  bottom: 0;
+  width: 60%;
+  height: 100px;
+  border-radius: 10px;
+  margin-bottom: 15px;
+  border: 12px solid rgba(255,0,0,0.7);
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.navBar > * {
+  transition: all .2s ease-in-out; 
+}
+
+.navBar > *:hover {
+  cursor: pointer;
+  filter: drop-shadow(0 0 0.75rem crimson);
+}
+
+.navBar > *:active {
+  transform: scale(0.9);
+}
+
+.navBar > * > i {
+  color: rgba(255,0,0,0.9);
+}
+
+.navBar > i {
+  color: white;
+}

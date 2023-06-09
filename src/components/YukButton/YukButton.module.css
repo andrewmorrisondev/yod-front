@@ -1,13 +1,22 @@
 .yukButton {
-  height: 50px;
-  width: 50px;
+  height: 60px;
+  width: 60px;
   border-radius: 50%;
+  border: 3px solid #FFC107;
   background-color: red;
   color: black;
 
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 2;
   cursor: pointer;
+  transition: all .2s ease-in-out; 
+}
+
+.yukButton:hover {
+  transform: scale(0.9); 
+}
+
+.yukButton > i {
+  color: #FFC107;
 }

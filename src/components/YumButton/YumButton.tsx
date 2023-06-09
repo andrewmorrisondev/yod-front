@@ -19,7 +19,7 @@ const YumButton = (props: YumButtonProps): JSX.Element => {
 
   return (
     <div className={styles.yumButton} onClick={handleClick}>
-      <p>Yum</p>
+      <i className="fa-solid fa-check fa-2xl"></i>
     </div>
   )
 }

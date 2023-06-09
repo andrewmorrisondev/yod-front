@@ -19,7 +19,7 @@ const YukButton = (props: YukButtonProps): JSX.Element => {
 
   return (
     <div className={styles.yukButton} onClick={handleClick}>
-      <p>Yuk</p>
+      <i className="fa-solid fa-x fa-2xl"></i>
     </div>
   )
 }

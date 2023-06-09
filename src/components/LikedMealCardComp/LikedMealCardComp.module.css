@@ -1,18 +1,39 @@
 .mealCard {
-  height : 480px;
-  width : 280px;
-  border : 1px solid white;
-  border-radius : 5px;
+  height: 418px;
+  width: 880px;
+  border: 9px solid red;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background-color: #FFC107;
 }
 
-.mealCard img {
-  height : 280px;
-  width : 278px;
-  border-radius : 5px;
+.mealCard .foodImg {
+  height: 400px;
+  width: 420px;
+  bottom: 0;
+  object-fit: cover;
+}
+
+.mealCard > h1 {
+  margin: 0;
+  display: flex;
 }
 
 .buttons {
-  display : flex;
-  justify-content : space-around;
-  flex-direction : row-reverse;
+  display: flex;
+  justify-content: space-around;
+  flex-direction: row-reverse;
+}
+
+.foodDeets {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.foodDeets > * {
+  text-align: center;
 }

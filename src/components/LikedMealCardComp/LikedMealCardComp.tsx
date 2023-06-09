@@ -22,10 +22,16 @@ const LikedMealCardComp = (props: LikedMealCardCompProps): JSX.Element => {
   
   return (
     <div className={styles.mealCard}>
-      <div className={styles.data}>
-        <h1>{props.mealCard.name}</h1>
-        <img src={props.mealCard.photo} alt={props.mealCard.name} />
+      <img className={styles.foodImg} src={props.mealCard.photo} alt={props.mealCard.name} />
+      <div className={styles.foodDeets}>
+        <h1 className={styles.name}>{props.mealCard.name}</h1>
+        <p>{props.mealCard.about}</p>
+        <p>Find it at {props.mealCard.resturantName}</p>
+        <a href={props.mealCard.resturantAddress}>
+          <p>{props.mealCard.resturantAddress}</p>
+        </a>
       </div>
+      
       <div className={styles.buttons}>
       {props.user.profile.id.toString() === props.mealCard.creatorId.toString() &&
         <>

@@ -1,5 +1,6 @@
 // npm modules
 import { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
 
 // css
 import styles from './ProfileDetails.module.css'
@@ -59,6 +60,7 @@ const ProfileDetails = (props: ProfileDetailsProps): JSX.Element => {
     <>
       <main className={styles.container}>
         <h1>Hi there {user.name}!</h1>
+        <Link to="/auth/change-password">Change Password</Link>
         {likedMeals.map((mealCard: MealCard) => (
             <LikedMealCardComp 
               key={mealCard.id} 
